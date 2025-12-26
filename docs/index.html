@@ -1,56 +1,80 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Extinction Challenge Tool</title>
-</head>
-<body>
+<style>
+  .layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
 
-<h2>Settings</h2>
+  .settings {
+    min-width: 250px;
+  }
 
-<label>
-  Players:
-  <select id="players">
-    <option value="1">Solo</option>
-    <option value="2">Coop</option>
-  </select>
-</label>
+  .map {
+    flex: 1;
+  }
 
-<br><br>
+  .map img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #444;
+  }
+</style>
 
-<label>
-  Difficulty:
-  <select id="difficulty">
-    <option value="default">Default</option>
-    <option value="hardcore">Hardcore</option>
-  </select>
-</label>
+<div class="layout">
+  <div class="settings">
+    <h2>Settings</h2>
 
-<br><br>
+    <label>
+      Players:
+      <select id="players">
+        <option value="1">solo</option>
+        <option value="2">coop</option>
+      </select>
+    </label>
 
-<label>
-  Cycle:
-  <select id="cycle">
-    <option value="1">A1H1</option>
-    <option value="2">A1H2</option>
-    <option value="3">A1H3</option>
-    <option value="4">A1H4</option>
-    <option value="5">A1H5</option>
-    <option value="6">A2H1</option>
-    <option value="7">A2H2</option>
-    <option value="8">A2H3</option>
-    <option value="9">A2H4</option>
-    <option value="10">A3H1</option>
-    <option value="11">A3H2</option>
-    <option value="12">A3H3</option>
-    <option value="13">A3H4</option>
-    <option value="14">A3H5</option>
-  </select>
-</label>
+    <br><br>
 
-<br><br>
+    <label>
+      Difficulty:
+      <select id="difficulty">
+        <option value="casual">casual</option>
+        <option value="regular">regular</option>
+        <option value="hardcore">hardcore</option>
+      </select>
+    </label>
 
-<button id="run">Get Valid Challenges</button>
+    <br><br>
+
+    <label>
+      Cycle:
+      <select id="cycle">
+        <option value="1">A1H1</option>
+        <option value="2">A1H2</option>
+        <option value="3">A1H3</option>
+        <option value="4">A1H4</option>
+        <option value="5">A1H5</option>
+        <option value="6">A2H1</option>
+        <option value="7">A2H2</option>
+        <option value="8">A2H3</option>  
+        <option value="9">A2H4</option>
+        <option value="10">A3H1</option>
+        <option value="11">A3H2</option>
+        <option value="12">A3H3</option>
+        <option value="13">A3H4</option>
+        <option value="14">A3H5</option>
+      </select>
+    </label>
+
+    <br><br>
+
+    <button id="run">Get Valid Challenges</button>
+  </div>
+
+  <div class="map">
+    <h2>Map Reference</h2>
+    <img id="map-image" src="" alt="Hive map">
+  </div>
+</div>
 
 <h2>Results</h2>
 <div id="output"></div>
@@ -62,6 +86,7 @@
 <script src="main.js"></script>
 </body>
 </html>
+
 
 
 
