@@ -118,11 +118,6 @@ function renderTable(challengesByHive) {
     }
 
     container.appendChild(table);
-
-    // Note to users
-    const note = document.createElement("p");
-    note.textContent = "Click a challenge to mark it as used.";
-    container.appendChild(note);
 }
 
 
@@ -217,3 +212,4 @@ document.getElementById("run").addEventListener("click", () => {
         console.error("Error loading map or challenges:", err);
     });
 });
+
