@@ -1,0 +1,23 @@
+{
+  "map": "nightfall",
+  "cycle_hives": {
+    "1": ["checkpoint_hive_01", "checkpoint_hive_02", "checkpoint_hive_03", "checkpoint_hive_04", "checkpoint_hive_05"],
+    "2": ["checkpoint_hive_01", "checkpoint_hive_02", "checkpoint_hive_03", "checkpoint_hive_04", "checkpoint_hive_05"],
+    "3": ["checkpoint_hive_01", "checkpoint_hive_02", "checkpoint_hive_03", "checkpoint_hive_04", "checkpoint_hive_05"],
+    "4": ["checkpoint_hive_01", "checkpoint_hive_02", "checkpoint_hive_03", "checkpoint_hive_04", "checkpoint_hive_05"],
+    "5": ["first_spider_fight"],
+    "6": ["compound_hive_01", "compound_hive_02", "compound_hive_03", "compound_hive_04", "compound_hive_07", "compound_hive_08"],
+    "7": ["compound_hive_01", "compound_hive_02", "compound_hive_03", "compound_hive_04", "compound_hive_07", "compound_hive_08"],
+    "8": ["compound_hive_01", "compound_hive_02", "compound_hive_03", "compound_hive_04", "compound_hive_07", "compound_hive_08"],
+    "9": ["compound_hive_05", "compound_hive_06"],
+    "10": ["facility_hive_01", "facility_hive_02", "facility_hive_03", "facility_hive_04", "facility_hive_05"],
+    "11": ["facility_hive_01", "facility_hive_02", "facility_hive_03", "facility_hive_04", "facility_hive_05"],
+    "12": ["facility_hive_01", "facility_hive_02", "facility_hive_03", "facility_hive_04", "facility_hive_05"],
+    "13": ["facility_hive_01", "facility_hive_02", "facility_hive_03", "facility_hive_04", "facility_hive_05"],
+    "14": ["facility_hive_07"]
+  },
+  "cycle_ranges": {
+    "min": 1,
+    "max": 14
+  }
+}
