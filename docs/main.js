@@ -42,22 +42,20 @@ document.getElementById("run").addEventListener("click", () => {
 
 /* FILTERING LOGIC */
 function getChallengesByHive(challenges, cycle, playerCount) {
-    const result = {}; // hive -> array of challenges
+    const result = {};
     const allowedHives = cycleHives[cycle] || [];
 
     for (const c of challenges) {
-        // Skip if challenge is not allowed in solo and only 1 player
         if (playerCount === 1 && !c.allowedinsolo) continue;
-
-        // Skip if challenge does not include this cycle
         if (!c.allowed_cycles.includes(cycle)) continue;
 
-        // Only include hives that exist in this cycle
         for (const hive of c.allowed_hives) {
             if (!allowedHives.includes(hive)) continue;
 
             if (!result[hive]) result[hive] = [];
-            result[hive].push(c.ref);
+            if (!usedChallenges.includes(c.ref)) {
+                result[hive].push(c.ref);
+            }
         }
     }
 
@@ -67,7 +65,7 @@ function getChallengesByHive(challenges, cycle, playerCount) {
 /* DISPLAY RESULTS */
 function renderTable(challengesByHive) {
     const container = document.getElementById("output");
-    container.innerHTML = ""; // clear previous results
+    container.innerHTML = "";
 
     const table = document.createElement("table");
     table.border = 1;
@@ -78,11 +76,49 @@ function renderTable(challengesByHive) {
     for (const [hive, chList] of Object.entries(challengesByHive)) {
         const row = table.insertRow();
         row.insertCell().textContent = hive;
-        row.insertCell().textContent = chList.join(", ");
+
+        const cell = row.insertCell();
+        chList.forEach(ch => {
+            const span = document.createElement("span");
+            span.textContent = ch;
+            span.style.cursor = "pointer";
+            span.style.marginRight = "5px";
+            span.addEventListener("click", () => markUsed(ch));
+            cell.appendChild(span);
+        });
     }
 
     container.appendChild(table);
 }
 
 
+// Load from localStorage or start empty
+let usedChallenges = JSON.parse(localStorage.getItem("usedChallenges") || "[]");
 
+function saveUsedChallenges() {
+    localStorage.setItem("usedChallenges", JSON.stringify(usedChallenges));
+}
+
+// Mark a challenge as used
+function markUsed(challengeRef) {
+    if (!usedChallenges.includes(challengeRef)) {
+        usedChallenges.push(challengeRef);
+        saveUsedChallenges();
+        renderUsedList();
+    }
+}
+
+// Clear all used challenges
+document.getElementById("clear-used").addEventListener("click", () => {
+    usedChallenges = [];
+    saveUsedChallenges();
+    renderUsedList();
+});
+
+function renderUsedList() {
+    const container = document.getElementById("used-list");
+    container.innerHTML = usedChallenges.join(", ") || "None";
+}
+
+// Initial render
+renderUsedList();
