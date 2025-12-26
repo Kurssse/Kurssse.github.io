@@ -86,6 +86,7 @@ function renderTable(challengesByHive) {
             const span = document.createElement("span");
             span.textContent = ch;
             span.style.cursor = "pointer";
+            span.style.display = "inline";
             span.addEventListener("click", () => markUsed(ch));
             cell.appendChild(span);
 
@@ -136,4 +137,5 @@ function getMapImage(cycle) {
     if (cycle >= 10 && cycle <= 14) return "images/POC3.png";
     return ""; // fallback, should not happen
 }
+
 
