@@ -198,9 +198,22 @@ document.getElementById("run").addEventListener("click", () => {
     const cycle = Number(document.getElementById("cycle").value);
     const playerCount = Number(document.getElementById("players").value);
 
-    loadChallenges(map, difficulty).then(() => {
-        const grouped = getChallengesByHive(challenges, cycle, playerCount, mapData.cycle_hives);
+    // Ensure mapData is loaded
+    const mapDataPromise = mapData ? Promise.resolve() : loadMapData(map);
+
+    mapDataPromise.then(() => {
+        // Now mapData is guaranteed to exist
+        return loadChallenges(map, difficulty);
+    }).then(() => {
+        const grouped = getChallengesByHive(
+            challenges,
+            cycle,
+            playerCount,
+            mapData.cycle_hives // safe now
+        );
         renderTable(grouped);
         updateMapImage(cycle);
+    }).catch(err => {
+        console.error("Error loading map or challenges:", err);
     });
 });
