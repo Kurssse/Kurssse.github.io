@@ -1,3 +1,20 @@
+const cycleHives = {
+    1: ["mini_lung"],
+    2: ["lodge_lung_1", "lodge_lung_2", "lodge_lung_4", "lodge_lung_5", "lodge_lung_6"],
+    3: ["lodge_lung_1", "lodge_lung_2", "lodge_lung_4", "lodge_lung_5", "lodge_lung_6"],
+    4: ["lodge_lung_1", "lodge_lung_2", "lodge_lung_4", "lodge_lung_5", "lodge_lung_6"],
+    5: ["lodge_lung_3"],
+    6: ["city_lung_1", "city_lung_2", "city_lung_3", "city_lung_4"],
+    7: ["city_lung_1", "city_lung_2", "city_lung_3", "city_lung_4"],
+    8: ["city_lung_1", "city_lung_2", "city_lung_3", "city_lung_4"],
+    9: ["city_lung_5"],
+    10: ["lake_lung_1", "lake_lung_2", "lake_lung_3", "lake_lung_4", "lake_lung_6"],
+    11: ["lake_lung_1", "lake_lung_2", "lake_lung_3", "lake_lung_4", "lake_lung_6"],
+    12: ["lake_lung_1", "lake_lung_2", "lake_lung_3", "lake_lung_4", "lake_lung_6"],
+    13: ["lake_lung_1", "lake_lung_2", "lake_lung_3", "lake_lung_4", "lake_lung_6"],
+    14: ["crater_lung"]
+};
+
 let challenges = [];
 
 /* LOAD JSON DATA */
@@ -26,14 +43,19 @@ document.getElementById("run").addEventListener("click", () => {
 /* FILTERING LOGIC */
 function getChallengesByHive(challenges, cycle, playerCount) {
     const result = {}; // hive -> array of challenges
+    const allowedHives = cycleHives[cycle] || [];
 
     for (const c of challenges) {
         // Skip if challenge is not allowed in solo and only 1 player
         if (playerCount === 1 && !c.allowedinsolo) continue;
 
+        // Skip if challenge does not include this cycle
         if (!c.allowed_cycles.includes(cycle)) continue;
 
+        // Only include hives that exist in this cycle
         for (const hive of c.allowed_hives) {
+            if (!allowedHives.includes(hive)) continue;
+
             if (!result[hive]) result[hive] = [];
             result[hive].push(c.ref);
         }
@@ -61,5 +83,6 @@ function renderTable(challengesByHive) {
 
     container.appendChild(table);
 }
+
 
 
