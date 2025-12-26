@@ -19,17 +19,18 @@ document.getElementById("run").addEventListener("click", () => {
   const playerCount = Number(document.getElementById("players").value);
 
   Promise.all([
-    loadMapData(map),
-    loadChallenges(map, difficulty)
-  ]).then(() => {
-    const grouped = getChallengesByHive(
-      challenges,
-      cycle,
-      playerCount,
-      mapData.cycle_hives
-    );
-    renderTable(grouped);
-  });
+      loadMapData(map),
+      loadChallenges(map, difficulty)
+    ]).then(() => {
+      const grouped = getChallengesByHive(
+        challenges,
+        cycle,
+        playerCount,
+        mapData.cycle_hives
+      );
+      renderTable(grouped);
+      updateMapImage(cycle);
+    });
 });
 
 /* FILTERING LOGIC */
@@ -120,10 +121,13 @@ function renderUsedList() {
 renderUsedList();
 
 function getMapImage(cycle) {
-    if (cycle >= 1 && cycle <= 5) return "images/POC1.png";
-    if (cycle >= 6 && cycle <= 9) return "images/POC2.png";
-    if (cycle >= 10 && cycle <= 14) return "images/POC3.png";
-    return ""; // fallback, should not happen
+  if (!mapData || !mapData.images) return "";
+
+  const entry = mapData.images.find(
+    img => cycle >= img.min && cycle <= img.max
+  );
+
+  return entry ? entry.file : "";
 }
 
 let mapData = null;
@@ -146,6 +150,18 @@ function populateCycles() {
     opt.value = i;
     opt.textContent = i;
     cycleSelect.appendChild(opt);
+  }
+}
+
+function updateMapImage(cycle) {
+  const img = document.getElementById("map-image");
+  const src = getMapImage(cycle);
+
+  if (src) {
+    img.src = src;
+    img.style.display = "block";
+  } else {
+    img.style.display = "none";
   }
 }
 
