@@ -1,0 +1,76 @@
+{
+  "map": "exodus",
+  "cycle_hives": {
+    "1": ["transition_left", "transition_right", "transition_middle"],
+    "2": ["transition_left", "transition_right", "transition_middle", "transition_upper_right", "transition_upper_left"],
+    "3": ["transition_left", "transition_right", "transition_middle", "transition_upper_right", "transition_upper_left"],
+    "4": ["transition_left", "transition_right", "transition_middle", "transition_upper_right", "transition_upper_left"],
+    "5": ["transition_left", "transition_right", "transition_middle", "transition_upper_right", "transition_upper_left"],
+    "6": ["conduit_gas_station_1", "conduit_gas_station_2"],
+    "7": ["conduit_gas_station_1", "conduit_gas_station_2"],
+    "8": ["conduit_parking_1", "conduit_parking_2"],
+    "9": ["conduit_parking_1", "conduit_parking_2"],
+    "10": ["conduit_rooftop_1", "conduit_rooftop_2"],
+    "11": ["conduit_rooftop_1", "conduit_rooftop_2"],
+    "12": ["conduit_gas_station_1", "conduit_gas_station_2"],
+    "13": ["conduit_gas_station_1", "conduit_gas_station_2"],
+    "14": ["conduit_parking_1", "conduit_parking_2"],
+    "15": ["conduit_parking_1", "conduit_parking_2"],
+    "16": ["conduit_rooftop_1", "conduit_rooftop_2"],
+    "17": ["conduit_rooftop_1", "conduit_rooftop_2"],
+    "18": ["conduit_gas_station_1", "conduit_gas_station_2"],
+    "19": ["conduit_gas_station_1", "conduit_gas_station_2"],
+    "20": ["conduit_parking_1", "conduit_parking_2"],
+    "21": ["conduit_parking_1", "conduit_parking_2"],
+    "22": ["conduit_rooftop_1", "conduit_rooftop_2"],
+    "23": ["conduit_rooftop_1", "conduit_rooftop_2"],
+    "24": ["ancestor_left"],
+    "25": ["ancestor_middle"],
+    "26": ["ancestor_right"]
+  },
+  "cycle_names": {
+    "1": "Door 1",
+    "2": "Door 2",
+    "3": "Door 3",
+    "4": "Door 4",
+    "5": "Door 5",
+    "6": "Generator 1",
+    "7": "Generator 2",
+    "8": "Generator 3",
+    "9": "Generator 4",
+    "10": "Generator 5",
+    "11": "Generator 6",
+    "12": "Medusa 1",
+    "13": "Medusa 2",
+    "14": "Medusa 3"
+  },
+  "cycle_ranges": {
+    "min": 1,
+    "max": 26
+  },
+   "images": [
+    { "min": 1, "max": 26, "file": "images/Exodus.png" }
+  ],
+  "ui_cycles": {
+  "1":  [1],
+  "2":  [2],
+  "3":  [3],
+  "4":  [4],
+  "5":  [5],
+
+  "6":  [6, 8, 10],
+  "7":  [6, 7, 8, 9, 10, 11],
+
+  "8":  [12, 14, 16],
+  "9":  [12, 13, 14, 15, 16, 17],
+
+  "10": [18, 20, 22],
+  "11": [18, 19, 20, 21, 22, 23],
+
+  "12": [24, 25, 26],
+  "13": [24, 25, 26],
+  "14": [24, 25, 26]
+  }
+}
+
+
