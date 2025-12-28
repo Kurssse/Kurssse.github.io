@@ -44,9 +44,11 @@ function getChallengesByHive(challenges, cycle, playerCount, cycleHives) {
     const result = {};
     const allowedHives = cycleHives[cycle] || [];
 
+    const realCycles = mapData.ui_cycles?.[cycle] ?? [cycle];
+
     for (const c of challenges) {
         if (playerCount === 1 && !c.allowedinsolo) continue; 
-        if (!c.allowed_cycles.includes(cycle)) continue;       
+        if (!realCycles.some(rc => c.allowed_cycles.includes(rc))) continue;       
 
         for (const hive of c.allowed_hives) {
             if (!allowedHives.includes(hive)) continue;      
@@ -167,3 +169,4 @@ document.getElementById("run").addEventListener("click", () => {
         console.error("Error loading map or challenges:", err);
     });
 });
+
