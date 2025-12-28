@@ -42,16 +42,22 @@ function populateCycles() {
 
 function getChallengesByHive(challenges, cycle, playerCount, cycleHives) {
     const result = {};
-    const allowedHives = cycleHives[cycle] || [];
-
+    
     const realCycles = mapData.ui_cycles?.[cycle] ?? [cycle];
+    
+    const allowedHives = new Set();
+    for (const rc of realCycles) {
+        const hives = cycleHives[rc] || [];
+        hives.forEach(h => allowedHives.add(h));
+    }
 
     for (const c of challenges) {
         if (playerCount === 1 && !c.allowedinsolo) continue; 
+        
         if (!realCycles.some(rc => c.allowed_cycles.includes(rc))) continue;       
 
         for (const hive of c.allowed_hives) {
-            if (!allowedHives.includes(hive)) continue;      
+            if (!allowedHives.has(hive)) continue;      
 
             if (!result[hive]) result[hive] = [];
             if (!usedChallenges.includes(c.ref)) {          
@@ -169,4 +175,5 @@ document.getElementById("run").addEventListener("click", () => {
         console.error("Error loading map or challenges:", err);
     });
 });
+
 
