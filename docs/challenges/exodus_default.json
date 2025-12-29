@@ -47,7 +47,7 @@
       "ref": "no_bleedout",
       "allowedinsolo": false,
       "allowed_cycles": [12, 14, 16, 18, 20, 22],
-      "allowed_hives": ["conduit_gas_station_1", "conduit_parking_1", "conduit_rooftop_1"]
+      "allowed_hives": ["conduit_gas_station_2", "conduit_parking_2", "conduit_rooftop_2"]
     },
     {
       "ref": "pistols_only",
@@ -285,3 +285,4 @@
     }
   ]
 }
+
